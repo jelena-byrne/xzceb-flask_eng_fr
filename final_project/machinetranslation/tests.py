@@ -9,7 +9,7 @@ class TestEnglishToFrench(unittest.TestCase):
         # test when input is "What is your favorite color?" and the output is "Quelle est votre couleur préférée?"
         self.assertEqual(englishToFrench("What is your favorite color?"), "Quelle est votre couleur préférée?")
         # test when input is null
-        self.assertIsNull(englishToFrench(),)
+        self.assertIsNone(englishToFrench(None))
         # test when input is "Hello" and the output is "Bonjour"
         self.assertEqual(englishToFrench("Hello"), "Bonjour")
 
@@ -20,7 +20,7 @@ class TestFrenchToEnglish(unittest.TestCase):
         # test when input is "Bonne soirée!" and the output is "Good evening!"
         self.assertEqual(frenchToEnglish("Bonne soirée!"), "Good evening!")
         # test when input is null
-        self.assertIsNull(frenchToEnglish(),)
+        self.assertIsNone(frenchToEnglish(None))
         # test when input is "Bonjour" and the output is "Hello"
         self.assertEqual(frenchToEnglish("Bonjour"), "Hello")
 
