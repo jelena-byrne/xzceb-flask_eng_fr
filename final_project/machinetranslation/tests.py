@@ -23,3 +23,6 @@ class TestFrenchToEnglish(unittest.TestCase):
         self.assertIsNull(frenchToEnglish(),)
         # test when input is "Bonjour" and the output is "Hello"
         self.assertEqual(frenchToEnglish("Bonjour"), "Hello")
+        
+        
+unittest.main()
