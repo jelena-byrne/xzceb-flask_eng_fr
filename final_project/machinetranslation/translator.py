@@ -15,11 +15,11 @@ lt.set_service_url(url)
 
 def englishToFrench(englishText):
     # a function to translate English to French
-    frenchText = LanguageTranslatorV3.translate(text=englishText, model_id='en-fr').get_result()
+    frenchText = lt.translate(text=englishText, model_id='en-fr').get_result()
     return frenchText
 
 def frenchToEnglish(frenchText):
     # a function to translate French to English
-    englishText = LanguageTranslatorV3.translate(text=frenchText, model_id='fr-en').get_result()
+    englishText = lt.translate(text=frenchText, model_id='fr-en').get_result()
     return englishText
 
