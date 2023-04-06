@@ -9,25 +9,42 @@ load_dotenv()
 apikey = os.environ['apikey']
 url = os.environ['url']
 
+# initiating the Watson Language Translator instance:
 authenticator = IAMAuthenticator(apikey)
-language_translator = LanguageTranslatorV3(version='2023-04-04', authenticator=authenticator)
-language_translator.set_service_url('https://api.us-south.language-translator.watson.cloud.ibm.com')
+language_translator = LanguageTranslatorV3(
+    version='2018-05-01', authenticator=authenticator)
+language_translator.set_service_url(
+    'https://api.us-south.language-translator.watson.cloud.ibm.com')
+
 
 def englishToFrench(englishText):
     # a function to translate English to French
-    frenchText = language_translator.translate(text=englishText, model_id='en-fr').get_result()
+    fr_translated_text = language_translator.translate(
+        text=englishText, model_id='en-fr').get_result()
+    # isolate the written translation in the dictionary object returned
+    frenchText = fr_translated_text["translations"][0]["translation"]
     return frenchText
+
 
 def frenchToEnglish(frenchText):
     # a function to translate French to English
-    englishText = language_translator.translate(text=frenchText, model_id='fr-en').get_result()
+    en_translated_text = language_translator.translate(
+        text=frenchText, model_id='fr-en').get_result()
+    # isolate the written translation in the dictionary object returned
+    englishText = en_translated_text["translations"][0]["translation"]
     return englishText
 
+
 def main():
-    englishText = input("Please enter text you would like to translate to French:")
+    # Capture the text user wants to translate:
+    englishText = input(
+        "Please enter text you would like to translate to French: ")
     print(englishToFrench(englishText))
-    frenchText = input("Please enter text you would like to translate to English:")
+    # Capture the text user wants to translate:
+    frenchText = input(
+        "Please enter text you would like to translate to English: ")
     print(frenchToEnglish(frenchText))
+
 
 if __name__ == "__main__":
     main()
