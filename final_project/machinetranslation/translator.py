@@ -18,21 +18,29 @@ language_translator.set_service_url(
 
 
 def englishToFrench(englishText):
-    # a function to translate English to French
-    fr_translated_text = language_translator.translate(
-        text=englishText, model_id='en-fr').get_result()
-    # isolate the written translation in the dictionary object returned
-    frenchText = fr_translated_text["translations"][0]["translation"]
-    return frenchText
+    if englishText is None:
+        # handling empty input from user:
+        return None
+    else:
+        # a function to translate English to French
+        fr_translated_text = language_translator.translate(
+            text=englishText, model_id='en-fr').get_result()
+        # isolate the written translation in the dictionary object returned
+        frenchText = fr_translated_text["translations"][0]["translation"]
+        return frenchText
 
 
 def frenchToEnglish(frenchText):
-    # a function to translate French to English
-    en_translated_text = language_translator.translate(
-        text=frenchText, model_id='fr-en').get_result()
-    # isolate the written translation in the dictionary object returned
-    englishText = en_translated_text["translations"][0]["translation"]
-    return englishText
+    if frenchText is None:
+        # handling empty input from user:
+        return None
+    else:
+        # a function to translate French to English
+        en_translated_text = language_translator.translate(
+            text=frenchText, model_id='fr-en').get_result()
+        # isolate the written translation in the dictionary object returned
+        englishText = en_translated_text["translations"][0]["translation"]
+        return englishText
 
 
 def main():
